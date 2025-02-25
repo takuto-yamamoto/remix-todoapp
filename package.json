@@ -1,0 +1,7 @@
+{
+  "name": "remix-todoapp",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ]
+}
