@@ -1,7 +1,7 @@
 {
   "name": "remix-todoapp",
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ]
+  "devDependencies": {
+    "@types/node": "^22.13.5",
+    "typescript": "^5.7.3"
+  }
 }

@@ -4,11 +4,12 @@ todo example app using remix
 
 ## Technology Stacks
 
-- [ ] pnpm
-- [ ] vite
+- [x] pnpm
+- [x] vite
 - [ ] vitest
+- [ ] oxc
 - [ ] playwright
-- [ ] **remix**
+- [x] **remix**
 - [ ] express
 - [ ] prisma
 - [ ] supertest
