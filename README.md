@@ -13,8 +13,7 @@ todo example app using remix
 - [ ] express
 - [ ] prisma
 - [ ] supertest
-- [ ] zod
-- [ ] zustand
+- [x] zod
 - [ ] sqlite
 
 ## License
