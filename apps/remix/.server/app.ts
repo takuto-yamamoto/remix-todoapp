@@ -20,7 +20,7 @@ app.use(express.static('public'));
 app.use(compression());
 
 // remix
-const build = await import(path.join(__dirname, 'build', 'index.js'));
+const build = await import(path.resolve('build/server/index.js'));
 app.all('*', createRequestHandler({ build }));
 
 // send back a 404 error for any unknown api request
