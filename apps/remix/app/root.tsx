@@ -14,8 +14,8 @@ import {
 import type { LinksFunction, LoaderFunctionArgs } from '@remix-run/node';
 
 import appStylesHref from './app.css?url';
-import { createEmptyContact, getContacts } from './data';
 import { useEffect } from 'react';
+import { createEmptyContact, listContacts } from './services/contact.server';
 
 export const links: LinksFunction = () => [
   { rel: 'stylesheet', href: appStylesHref },
@@ -33,7 +33,7 @@ declare global {
 export const loader = async ({ request }: LoaderFunctionArgs) => {
   const url = new URL(request.url);
   const q = url.searchParams.get('q');
-  const contacts = await getContacts(q);
+  const contacts = await listContacts(q);
   return {
     contacts,
     q,

@@ -1,8 +1,7 @@
 import { ActionFunctionArgs, LoaderFunctionArgs } from '@remix-run/node';
 import { Form, redirect, useLoaderData, useNavigate } from '@remix-run/react';
 import invariant from 'tiny-invariant';
-
-import { getContact, updateContact } from '../data';
+import { getContact, updateContact } from '../services/contact.server';
 
 export const loader = async ({ params }: LoaderFunctionArgs) => {
   invariant(params.contactId, 'Missing contactId param');
@@ -36,14 +35,14 @@ export default function EditContact() {
         <span>Name</span>
         <input
           aria-label="First name"
-          defaultValue={contact.first}
+          defaultValue={contact.first ?? undefined}
           name="first"
           placeholder="First"
           type="text"
         />
         <input
           aria-label="Last name"
-          defaultValue={contact.last}
+          defaultValue={contact.last ?? undefined}
           name="last"
           placeholder="Last"
           type="text"
@@ -52,7 +51,7 @@ export default function EditContact() {
       <label>
         <span>Twitter</span>
         <input
-          defaultValue={contact.twitter}
+          defaultValue={contact.twitter ?? undefined}
           name="twitter"
           placeholder="@jack"
           type="text"
@@ -62,7 +61,7 @@ export default function EditContact() {
         <span>Avatar URL</span>
         <input
           aria-label="Avatar URL"
-          defaultValue={contact.avatar}
+          defaultValue={contact.avatar ?? undefined}
           name="avatar"
           placeholder="https://example.com/avatar.jpg"
           type="text"
@@ -70,7 +69,11 @@ export default function EditContact() {
       </label>
       <label>
         <span>Notes</span>
-        <textarea defaultValue={contact.notes} name="notes" rows={6} />
+        <textarea
+          defaultValue={contact.notes ?? undefined}
+          name="notes"
+          rows={6}
+        />
       </label>
       <p>
         <button type="submit">Save</button>

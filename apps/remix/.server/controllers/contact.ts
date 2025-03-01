@@ -2,8 +2,8 @@
 import { Request, Response } from 'express';
 import * as services from '../services/contact';
 
-export const listContacts = async (_req: Request, res: Response) => {
-  const contacts = await services.listContacts();
+export const listContacts = async (req: Request, res: Response) => {
+  const contacts = await services.listContacts(req.params.q);
   res.json({ contacts });
 };
 

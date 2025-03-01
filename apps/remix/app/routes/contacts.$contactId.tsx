@@ -1,9 +1,10 @@
 import { Form, useFetcher, useLoaderData } from '@remix-run/react';
 import { FunctionComponent } from 'react';
 
-import { ContactRecord, getContact, updateContact } from '../data';
 import { ActionFunctionArgs, LoaderFunctionArgs } from '@remix-run/node';
 import invariant from 'tiny-invariant';
+import { getContact, updateContact } from '../services/contact.server';
+import { type Contact } from '@prisma/client';
 
 export const loader = async ({ params }: LoaderFunctionArgs) => {
   invariant(params.contactId, 'Missing Contact Id');
@@ -35,7 +36,7 @@ export default function Contact() {
         <img
           alt={`${contact.first} ${contact.last} avatar`}
           key={contact.avatar}
-          src={contact.avatar}
+          src={contact.avatar ?? undefined}
         />
       </div>
 
@@ -87,7 +88,7 @@ export default function Contact() {
 }
 
 const Favorite: FunctionComponent<{
-  contact: Pick<ContactRecord, 'favorite'>;
+  contact: Pick<Contact, 'favorite'>;
 }> = ({ contact }) => {
   const fetcher = useFetcher();
   const favorite = fetcher.formData

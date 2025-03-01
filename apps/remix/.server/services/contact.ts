@@ -1,4 +1,6 @@
+import _ from 'lodash';
 import { Prisma, PrismaClient } from '@prisma/client';
+import { matchSorter } from 'match-sorter';
 
 const prisma = new PrismaClient();
 
@@ -36,6 +38,14 @@ export const deleteContact = async (id: string) => {
   });
 };
 
-export const listContacts = async () => {
-  return await prisma.contact.findMany();
+export const listContacts = async (query: string | null) => {
+  let contacts = await prisma.contact.findMany();
+
+  if (query) {
+    contacts = matchSorter(contacts, query, {
+      keys: ['first', 'last'],
+    });
+  }
+
+  return _.sortBy(contacts, ['last', 'createdAt']);
 };

@@ -34,7 +34,10 @@ export const deleteContact = async (id: string) => {
   return res.data;
 };
 
-export const listContacts = async () => {
-  const res = await api.get<ListContactsResponse>('/contacts');
+export const listContacts = async (q: string | null) => {
+  const endpoint = '/contacts';
+  const queryParams = q ? `?q=${q}` : '';
+
+  const res = await api.get<ListContactsResponse>(`${endpoint}${queryParams}`);
   return res.data.contacts;
 };
