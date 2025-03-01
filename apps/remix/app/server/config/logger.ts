@@ -15,7 +15,11 @@ const logger = winston.createLogger({
     config.env === 'dev'
       ? winston.format.colorize()
       : winston.format.uncolorize(),
-    winston.format.printf(({ level, message }) => `${level}: ${message}`)
+    winston.format.timestamp({ format: 'YYYY-MM-DDTHH:mm:ss.SSSZ' }),
+    winston.format.printf(
+      ({ level, message, timestamp }) =>
+        `[${level.toUpperCase()}] ${timestamp} ${message}`
+    )
   ),
   defaultMeta: { service: 'remix-todoapp' },
   transports: [
