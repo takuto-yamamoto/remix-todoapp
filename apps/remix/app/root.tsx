@@ -15,7 +15,7 @@ import type { LinksFunction, LoaderFunctionArgs } from '@remix-run/node';
 
 import appStylesHref from './app.css?url';
 import { useEffect } from 'react';
-import { createEmptyContact, listContacts } from './services/contact.server';
+import { createEmptyContact, listContacts } from './services/contact';
 
 export const links: LinksFunction = () => [
   { rel: 'stylesheet', href: appStylesHref },
