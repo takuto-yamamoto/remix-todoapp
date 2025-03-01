@@ -1,15 +1,16 @@
 import process from 'process';
 import app from './app';
+import logger from './config/logger';
 
 const port = process.env.PORT ? parseInt(process.env.PORT) : 3000;
 const server = app.listen(port, () => {
-  console.log(`Express Server initiated listening on port ${port}`);
+  logger.info(`Express Server initiated listening on port ${port}`);
 });
 
 const safeShutdown = () => {
   if (server) {
     server.close(() => {
-      console.info('Server closed');
+      logger.info('Server closed');
       process.exit(1);
     });
   } else {
@@ -17,11 +18,11 @@ const safeShutdown = () => {
   }
 };
 const unexpectedExceptionHandler = (error: Error) => {
-  console.error(error);
+  logger.error(error);
   safeShutdown();
 };
 const exitSignalsHandler = (signal: NodeJS.Signals) => {
-  console.log(`${signal} signal received: closing HTTP server.`);
+  logger.info(`${signal} signal received: closing HTTP server.`);
   safeShutdown();
 };
 
