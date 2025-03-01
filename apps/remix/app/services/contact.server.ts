@@ -1,31 +1,31 @@
 import { api } from '../utils/api';
 import {
   ContactMutation,
-  CreateContactResponse,
-  DeleteContactResponse,
-  GetContactResponse,
+  CreateContactRes,
+  DeleteContactRes,
+  GetContactRes,
   ListContactsResponse,
-  UpdateContactResponse,
-} from '../schemas/contact';
+  UpdateContactRes,
+} from '../../.server/schemas/contact';
 
 export const createEmptyContact = async () => {
   const contact: ContactMutation = {};
-  const res = await api.post<CreateContactResponse>('/contacts', contact);
+  const res = await api.post<CreateContactRes>('/contacts', contact);
   return res.data.contact;
 };
 
 export const getContact = async (id: string) => {
-  const res = await api.get<GetContactResponse>(`/contact/${id}`);
+  const res = await api.get<GetContactRes>(`/contact/${id}`);
   return res.data.contact;
 };
 
 export const updateContact = async (id: string, contact: ContactMutation) => {
-  const res = await api.patch<UpdateContactResponse>(`/contact/${id}`, contact);
+  const res = await api.patch<UpdateContactRes>(`/contact/${id}`, contact);
   return res.data.contact;
 };
 
 export const deleteContact = async (id: string) => {
-  const res = await api.delete<DeleteContactResponse>(`/contact/${id}`);
+  const res = await api.delete<DeleteContactRes>(`/contact/${id}`);
   return res.data;
 };
 
