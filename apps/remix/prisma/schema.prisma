@@ -1,0 +1,25 @@
+
+generator zod {
+  provider                         = "zod-prisma-types"
+  output                           = "./generated/zod"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Contact {
+  id        String @id @default(uuid())
+  first     String?
+  last      String?
+  avatar    String?
+  twitter   String?
+  notes     String?
+  favorite  Boolean?
+  createdAt DateTime @default(now())
+}

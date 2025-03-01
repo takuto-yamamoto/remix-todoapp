@@ -10,7 +10,7 @@ todo example app using remix
 - [ ] oxc
 - [ ] playwright
 - [x] **remix**
-- [ ] express
+- [x] express
 - [ ] prisma
 - [ ] supertest
 - [x] zod
