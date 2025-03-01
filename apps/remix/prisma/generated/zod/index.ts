@@ -39,6 +39,14 @@ export const ContactSchema = z.object({
 export type Contact = z.infer<typeof ContactSchema>
 
 /////////////////////////////////////////
+// CONTACT PARTIAL SCHEMA
+/////////////////////////////////////////
+
+export const ContactPartialSchema = ContactSchema.partial()
+
+export type ContactPartial = z.infer<typeof ContactPartialSchema>
+
+/////////////////////////////////////////
 // SELECT & INCLUDE
 /////////////////////////////////////////
 

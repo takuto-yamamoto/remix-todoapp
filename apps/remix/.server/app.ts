@@ -7,6 +7,7 @@ import compression from 'compression';
 import httpStatus from 'http-status';
 import { ApiError } from './utils/errors';
 import { errorConverter, errorHandler } from './middlewares/error';
+import contacts from './routes/contacts';
 
 const app = express();
 
@@ -18,6 +19,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 app.use(compression());
+
+app.use('/contacts', contacts);
 
 // remix
 const build = await import(path.resolve('build/server/index.js'));

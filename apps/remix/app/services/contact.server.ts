@@ -1,16 +1,17 @@
 import { api } from '../utils/api';
 import {
-  ContactMutation,
+  CreateContactReq,
   CreateContactRes,
   DeleteContactRes,
   GetContactRes,
   ListContactsResponse,
+  UpdateContactReq,
   UpdateContactRes,
 } from '../../.server/schemas/contact';
 
 export const createEmptyContact = async () => {
-  const contact: ContactMutation = {};
-  const res = await api.post<CreateContactRes>('/contacts', contact);
+  const data: CreateContactReq = { contact: {} };
+  const res = await api.post<CreateContactRes>('/contacts', data);
   return res.data.contact;
 };
 
@@ -19,8 +20,12 @@ export const getContact = async (id: string) => {
   return res.data.contact;
 };
 
-export const updateContact = async (id: string, contact: ContactMutation) => {
-  const res = await api.patch<UpdateContactRes>(`/contact/${id}`, contact);
+export const updateContact = async (
+  id: string,
+  contact: UpdateContactReq['contact']
+) => {
+  const data: UpdateContactReq = { contact };
+  const res = await api.patch<UpdateContactRes>(`/contact/${id}`, data);
   return res.data.contact;
 };
 

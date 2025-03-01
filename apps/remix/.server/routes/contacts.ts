@@ -1,17 +1,17 @@
-import { validate } from '../middlewares/validate';
 import {
-  createContactReqSchema,
-  updateContactReqSchema,
+  CreateContactReqSchema,
+  UpdateContactReqSchema,
 } from '../schemas/contact';
+import { validate } from '../middlewares/validate';
 import express from 'express';
 
 const router = express.Router();
 
-router.route('/').get().post(validate(createContactReqSchema));
+router.route('/').get().post(validate(CreateContactReqSchema));
 router
   .route('/:contactId')
   .get()
-  .patch(validate(updateContactReqSchema))
+  .patch(validate(UpdateContactReqSchema))
   .delete();
 
 export default router;
