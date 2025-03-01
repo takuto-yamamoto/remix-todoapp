@@ -21,11 +21,26 @@ export const links: LinksFunction = () => [
   { rel: 'stylesheet', href: appStylesHref },
 ];
 
+// ref: https://remix.run/docs/en/main/guides/envvars
+declare global {
+  interface Window {
+    ENV: {
+      API_BASE_URL: string;
+    };
+  }
+}
+
 export const loader = async ({ request }: LoaderFunctionArgs) => {
   const url = new URL(request.url);
   const q = url.searchParams.get('q');
   const contacts = await getContacts(q);
-  return { contacts, q };
+  return {
+    contacts,
+    q,
+    ENV: {
+      API_BASE_URL: process.env.API_BASE_URL,
+    },
+  };
 };
 
 export const action = async () => {
@@ -34,7 +49,7 @@ export const action = async () => {
 };
 
 export default function App() {
-  const { contacts, q } = useLoaderData<typeof loader>();
+  const { contacts, q, ENV } = useLoaderData<typeof loader>();
   const navigation = useNavigation();
   const submit = useSubmit();
   const searching =
@@ -127,6 +142,13 @@ export default function App() {
         >
           <Outlet />
         </div>
+
+        {/* ref: https://remix.run/docs/en/main/guides/envvars */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.ENV = ${JSON.stringify(ENV)}`,
+          }}
+        />
 
         <ScrollRestoration />
         <Scripts />
