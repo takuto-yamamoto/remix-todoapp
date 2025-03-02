@@ -4,9 +4,9 @@ import {
   Meta,
   NavLink,
   Outlet,
-  redirect,
   Scripts,
   ScrollRestoration,
+  redirect,
   useLoaderData,
   useNavigation,
   useSubmit,
@@ -102,9 +102,11 @@ export default function App() {
                 {contacts.map((contact) => (
                   <li key={contact.id}>
                     <NavLink
-                      className={({ isActive, isPending }) =>
-                        isActive ? 'active' : isPending ? 'pending' : ''
-                      }
+                      className={({ isActive, isPending }) => {
+                        if (isActive) return 'active';
+                        if (isPending) return 'pending';
+                        return '';
+                      }}
                       to={`contacts/${contact.id}`}
                     >
                       {contact.first || contact.last ? (
@@ -114,7 +116,7 @@ export default function App() {
                       ) : (
                         <i>No Name</i>
                       )}{' '}
-                      {contact.favorite ? <span>★</span> : null}
+                      {contact.favorite && <span>★</span>}
                     </NavLink>
                   </li>
                 ))}

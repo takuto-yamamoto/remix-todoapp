@@ -2,6 +2,7 @@ import process from 'process';
 import app from './app';
 import logger from './config/logger';
 import config from './config/config';
+import { EXIT_CODE_ERROR } from 'utils/constants';
 
 const server = app.listen(config.port, () => {
   logger.info(`Express Server initiated listening on port ${config.port}`);
@@ -11,10 +12,10 @@ const safeShutdown = () => {
   if (server) {
     server.close(() => {
       logger.info('Server closed');
-      process.exit(1);
+      process.exit(EXIT_CODE_ERROR);
     });
   } else {
-    process.exit(1);
+    process.exit(EXIT_CODE_ERROR);
   }
 };
 const unexpectedExceptionHandler = (error: Error) => {

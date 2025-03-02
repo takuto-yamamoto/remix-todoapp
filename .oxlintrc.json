@@ -1,0 +1,41 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "ignorePatterns": ["node_modules", "build"],
+  "plugins": ["typescript", "oxc", "unicorn"],
+  "env": {},
+  "categories": {
+    "correctness": "error",
+    "suspicious": "warn",
+    "style": "warn",
+    "nursery": "off"
+  },
+  "rules": {
+    "no-ternary": "off",
+    "yoda": "off",
+    "sort-keys": "off",
+    "max-params": "off",
+    "no-magic-numbers": [
+      "warn",
+      {
+        "ignore": [],
+        "ignoreArrayIndexes": true
+      }
+    ],
+    "sort-imports": "off"
+  },
+  "overrides": [
+    {
+      "files": ["apps/api/**/*.ts", "apps/api/**/*.tsx"],
+      "env": {
+        "node": true
+      }
+    },
+    {
+      "files": ["apps/web/**/*.ts", "apps/web/**/*.tsx"],
+      "env": {
+        "browser": true
+      },
+      "plugins": ["react"]
+    }
+  ]
+}

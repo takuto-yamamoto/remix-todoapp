@@ -52,15 +52,15 @@ export default function Contact() {
           <Favorite contact={contact} />
         </h1>
 
-        {contact.twitter ? (
+        {contact.twitter && (
           <p>
             <a href={`https://twitter.com/${contact.twitter}`}>
               {contact.twitter}
             </a>
           </p>
-        ) : null}
+        )}
 
-        {contact.notes ? <p>{contact.notes}</p> : null}
+        {contact.notes && <p>{contact.notes}</p>}
 
         <div>
           <Form action="edit">

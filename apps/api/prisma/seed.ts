@@ -1,8 +1,9 @@
 import { PrismaClient } from '@prisma/client';
+import { EXIT_CODE_ERROR } from 'utils/constants';
 
 const prisma = new PrismaClient();
 
-async function main() {
+const main = async () => {
   await prisma.contact.createMany({
     data: [
       {
@@ -33,12 +34,12 @@ async function main() {
   });
 
   console.log('Seeding finished!');
-}
+};
 
 main()
-  .catch((e) => {
-    console.error(e);
-    process.exit(1);
+  .catch((error) => {
+    console.error(error);
+    process.exit(EXIT_CODE_ERROR);
   })
   .finally(async () => {
     await prisma.$disconnect();

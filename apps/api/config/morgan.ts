@@ -2,6 +2,7 @@ import morgan from 'morgan';
 import config from './config';
 import logger from './logger';
 import express from 'express';
+import { HTTP_ERROR_THRESHOLD } from 'utils/constants';
 
 morgan.token(
   'message',
@@ -13,11 +14,11 @@ const successResponseFormat = `${ipFormat}:method :url :status - :response-time 
 const errorResponseFormat = `${ipFormat}:method :url :status - :response-time ms - :message`;
 
 const successHandler = morgan(successResponseFormat, {
-  skip: (_, res) => res.statusCode >= 400,
+  skip: (_, res) => res.statusCode >= HTTP_ERROR_THRESHOLD,
   stream: { write: (message) => logger.info(message.trim()) },
 });
 const errorHandler = morgan(errorResponseFormat, {
-  skip: (_, res) => res.statusCode < 400,
+  skip: (_, res) => res.statusCode < HTTP_ERROR_THRESHOLD,
   stream: { write: (message) => logger.error(message.trim()) },
 });
 

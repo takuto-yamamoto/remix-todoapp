@@ -1,3 +1,4 @@
+import httpStatus from 'http-status';
 import {
   CreateContactReqSchema,
   UpdateContactReqSchema,
@@ -18,7 +19,7 @@ export const getContact = async (req: Request, res: Response) => {
 export const createContact = async (req: Request, res: Response) => {
   const { contact } = CreateContactReqSchema.parse(req.body);
   const created = await services.createContact(contact);
-  res.status(201).json({ contact: created });
+  res.status(httpStatus.CREATED).json({ contact: created });
 };
 
 export const updateContact = async (req: Request, res: Response) => {
@@ -29,5 +30,5 @@ export const updateContact = async (req: Request, res: Response) => {
 
 export const deleteContact = async (req: Request, res: Response) => {
   await services.deleteContact(req.params.id);
-  res.status(204).send();
+  res.status(httpStatus.NO_CONTENT).send();
 };
