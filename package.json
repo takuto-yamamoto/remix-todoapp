@@ -1,7 +1,17 @@
 {
   "name": "remix-todoapp",
+  "scripts": {
+    "prepare": "husky",
+    "lint": "oxlint"
+  },
   "devDependencies": {
     "@types/node": "^22.13.5",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.4.3",
+    "oxlint": "^0.15.12",
     "typescript": "^5.7.3"
+  },
+  "lint-staged": {
+    "**/*.{js,mjs,cjs,jsx,ts,mts,cts,tsx,vue,astro,svelte}": "oxlint"
   }
 }
