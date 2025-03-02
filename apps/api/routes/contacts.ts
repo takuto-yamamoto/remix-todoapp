@@ -1,9 +1,5 @@
-import {
-  CreateContactReqSchema,
-  UpdateContactReqSchema,
-} from '../schemas/contact';
-import { validate } from '../middlewares/validate';
 import express from 'express';
+
 import {
   createContact,
   deleteContact,
@@ -11,6 +7,11 @@ import {
   listContacts,
   updateContact,
 } from '../controllers/contact';
+import { validate } from '../middlewares/validate';
+import {
+  CreateContactReqSchema,
+  UpdateContactReqSchema,
+} from '../schemas/contact';
 
 const router = express.Router();
 

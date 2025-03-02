@@ -1,9 +1,10 @@
+import { Request, Response } from 'express';
 import httpStatus from 'http-status';
+
 import {
   CreateContactReqSchema,
   UpdateContactReqSchema,
 } from '../schemas/contact';
-import { Request, Response } from 'express';
 import * as services from '../services/contact';
 
 export const listContacts = async (req: Request, res: Response) => {

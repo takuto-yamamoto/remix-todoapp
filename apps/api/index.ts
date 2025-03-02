@@ -1,8 +1,10 @@
 import process from 'process';
-import app from './app';
-import logger from './config/logger';
-import config from './config/config';
+
 import { EXIT_CODE_ERROR } from 'utils/constants';
+
+import app from './app';
+import config from './config/config';
+import logger from './config/logger';
 
 const server = app.listen(config.port, () => {
   logger.info(`Express Server initiated listening on port ${config.port}`);

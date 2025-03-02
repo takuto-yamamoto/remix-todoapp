@@ -1,8 +1,9 @@
 import express from 'express';
-import { ApiError } from '../utils/errors';
 import httpStatus from 'http-status';
+
 import config from '../config/config';
 import logger from '../config/logger';
+import { ApiError } from '../utils/errors';
 
 export const errorConverter: express.ErrorRequestHandler = (
   err,

@@ -1,8 +1,9 @@
+import express from 'express';
 import morgan from 'morgan';
+import { HTTP_ERROR_THRESHOLD } from 'utils/constants';
+
 import config from './config';
 import logger from './logger';
-import express from 'express';
-import { HTTP_ERROR_THRESHOLD } from 'utils/constants';
 
 morgan.token(
   'message',

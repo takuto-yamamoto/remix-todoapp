@@ -1,11 +1,12 @@
+import compression from 'compression';
 import express from 'express';
+import httpStatus from 'http-status';
+
 import config from './config/config';
 import morgan from './config/morgan';
-import compression from 'compression';
-import httpStatus from 'http-status';
-import { ApiError } from './utils/errors';
 import { errorConverter, errorHandler } from './middlewares/error';
 import contacts from './routes/contacts';
+import { ApiError } from './utils/errors';
 
 const app = express();
 

@@ -1,8 +1,9 @@
+import { z } from 'zod';
+
 import {
   ContactPartialSchema,
   ContactSchema,
 } from '../prisma/generated/zod/index';
-import { z } from 'zod';
 
 export const CreateContactResSchema = z.object({
   contact: ContactSchema,

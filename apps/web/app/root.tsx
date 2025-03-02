@@ -11,11 +11,12 @@ import {
   useNavigation,
   useSubmit,
 } from '@remix-run/react';
-import type { LinksFunction, LoaderFunctionArgs } from '@remix-run/node';
+import { useEffect } from 'react';
 
 import appStylesHref from './app.css?url';
-import { useEffect } from 'react';
 import { createEmptyContact, listContacts } from './services/contact';
+
+import type { LinksFunction, LoaderFunctionArgs } from '@remix-run/node';
 
 export const links: LinksFunction = () => [
   { rel: 'stylesheet', href: appStylesHref },

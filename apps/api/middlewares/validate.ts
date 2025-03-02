@@ -1,7 +1,9 @@
-import { ZodSchema } from 'zod';
 import express from 'express';
-import { ApiError } from '../utils/errors';
 import httpStatus from 'http-status';
+import { ZodSchema } from 'zod';
+
+import { ApiError } from '../utils/errors';
+
 
 export const validate =
   (schema: ZodSchema) =>

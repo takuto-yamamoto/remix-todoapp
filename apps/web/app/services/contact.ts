@@ -1,4 +1,3 @@
-import { api } from '../utils/api';
 import {
   CreateContactReq,
   CreateContactRes,
@@ -8,6 +7,7 @@ import {
   UpdateContactReq,
   UpdateContactRes,
 } from '../../../api/schemas/contact';
+import { api } from '../utils/api';
 
 export const createEmptyContact = async () => {
   const data: CreateContactReq = { contact: {} };

@@ -1,7 +1,8 @@
 import path from 'path';
+
 import dotenv from 'dotenv';
-import { z } from 'zod';
 import { DEFAULT_PORT } from 'utils/constants';
+import { z } from 'zod';
 
 dotenv.config({ path: path.join(__dirname, '../../.env') });
 

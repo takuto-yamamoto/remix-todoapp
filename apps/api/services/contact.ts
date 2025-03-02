@@ -1,5 +1,5 @@
-import _ from 'lodash';
 import { Prisma, PrismaClient } from '@prisma/client';
+import _ from 'lodash';
 import { matchSorter } from 'match-sorter';
 
 const prisma = new PrismaClient();

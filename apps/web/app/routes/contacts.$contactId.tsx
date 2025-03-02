@@ -1,10 +1,11 @@
+import { type Contact } from '@prisma/client';
+import { ActionFunctionArgs, LoaderFunctionArgs } from '@remix-run/node';
 import { Form, useFetcher, useLoaderData } from '@remix-run/react';
 import { FunctionComponent } from 'react';
-
-import { ActionFunctionArgs, LoaderFunctionArgs } from '@remix-run/node';
 import invariant from 'tiny-invariant';
+
 import { getContact, updateContact } from '../services/contact';
-import { type Contact } from '@prisma/client';
+
 
 export const loader = async ({ params }: LoaderFunctionArgs) => {
   invariant(params.contactId, 'Missing Contact Id');
