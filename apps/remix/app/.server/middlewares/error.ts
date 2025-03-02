@@ -24,7 +24,7 @@ export const errorHandler: express.ErrorRequestHandler = (
 ) => {
   let { statusCode, message } = err;
 
-  if (config.env === 'prod' && !err.isOperational) {
+  if (config.env === 'production' && !err.isOperational) {
     statusCode = httpStatus.INTERNAL_SERVER_ERROR;
     message = httpStatus[httpStatus.INTERNAL_SERVER_ERROR];
   }
@@ -36,6 +36,6 @@ export const errorHandler: express.ErrorRequestHandler = (
   res.status(statusCode).send({
     code: statusCode,
     message,
-    ...(config.env === 'dev' && { stack: err.stack }),
+    ...(config.env === 'development' && { stack: err.stack }),
   });
 };
