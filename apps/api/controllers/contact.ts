@@ -1,4 +1,7 @@
-// controllers/contactController.ts
+import {
+  CreateContactReqSchema,
+  UpdateContactReqSchema,
+} from '../schemas/contact';
 import { Request, Response } from 'express';
 import * as services from '../services/contact';
 
@@ -13,13 +16,15 @@ export const getContact = async (req: Request, res: Response) => {
 };
 
 export const createContact = async (req: Request, res: Response) => {
-  const contact = await services.createContact(req.body);
-  res.status(201).json({ contact });
+  const { contact } = CreateContactReqSchema.parse(req.body);
+  const created = await services.createContact(contact);
+  res.status(201).json({ contact: created });
 };
 
 export const updateContact = async (req: Request, res: Response) => {
-  const contact = await services.updateContact(req.params.id, req.body);
-  res.json({ contact });
+  const { contact } = UpdateContactReqSchema.parse(req.body);
+  const updated = await services.updateContact(req.params.id, contact);
+  res.json({ contact: updated });
 };
 
 export const deleteContact = async (req: Request, res: Response) => {

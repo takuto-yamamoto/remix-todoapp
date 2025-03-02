@@ -16,7 +16,7 @@ export const createEmptyContact = async () => {
 };
 
 export const getContact = async (id: string) => {
-  const res = await api.get<GetContactRes>(`/contact/${id}`);
+  const res = await api.get<GetContactRes>(`/contacts/${id}`);
   return res.data.contact;
 };
 
@@ -25,12 +25,12 @@ export const updateContact = async (
   contact: UpdateContactReq['contact']
 ) => {
   const data: UpdateContactReq = { contact };
-  const res = await api.patch<UpdateContactRes>(`/contact/${id}`, data);
+  const res = await api.patch<UpdateContactRes>(`/contacts/${id}`, data);
   return res.data.contact;
 };
 
 export const deleteContact = async (id: string) => {
-  const res = await api.delete<DeleteContactRes>(`/contact/${id}`);
+  const res = await api.delete<DeleteContactRes>(`/contacts/${id}`);
   return res.data;
 };
 
