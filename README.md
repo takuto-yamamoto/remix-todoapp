@@ -11,10 +11,10 @@ todo example app using remix
 - [ ] playwright
 - [x] **remix**
 - [x] express
-- [ ] prisma
+- [x] prisma
 - [ ] supertest
 - [x] zod
-- [ ] sqlite
+- [x] sqlite
 
 ## License
 
