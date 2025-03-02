@@ -10,29 +10,27 @@
     "fix": "oxlint . --fix && eslint . --fix"
   },
   "devDependencies": {
+    "@eslint/compat": "^1.2.7",
+    "@eslint/eslintrc": "^3.3.0",
+    "@eslint/js": "^9.21.0",
     "@types/node": "^22.13.5",
-    "@typescript-eslint/parser": "^6.7.4",
+    "@typescript-eslint/parser": "^8.25.0",
     "eslint": "^9.21.0",
     "eslint-plugin-import": "^2.28.1",
     "eslint-plugin-oxlint": "^0.15.12",
     "eslint-plugin-unused-imports": "^4.1.4",
+    "globals": "^16.0.0",
     "husky": "^9.1.7",
     "jiti": "^2.4.2",
     "lint-staged": "^15.4.3",
     "oxlint": "^0.15.12",
-    "typescript": "^5.7.3"
+    "typescript": "^5.7.3",
+    "typescript-eslint": "^8.25.0"
   },
   "lint-staged": {
     "**/*.{js,mjs,cjs,jsx,ts,mts,cts,tsx,vue,astro,svelte}": [
       "oxlint . --fix",
       "eslint . --fix"
     ]
-  },
-  "dependencies": {
-    "@eslint/compat": "^1.2.7",
-    "@eslint/eslintrc": "^3.3.0",
-    "@eslint/js": "^9.21.0",
-    "globals": "^16.0.0",
-    "typescript-eslint": "^8.25.0"
   }
 }
