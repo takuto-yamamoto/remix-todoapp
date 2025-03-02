@@ -1,0 +1,15 @@
+{
+  "include": ["**/*.ts"],
+  "exclude": ["**/node_modules/**"],
+  "compilerOptions": {
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "module": "CommonJS",
+    "moduleResolution": "node",
+    "target": "ES2022",
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "baseUrl": ".",
+    "outDir": "./build"
+  }
+}

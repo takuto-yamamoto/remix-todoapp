@@ -8,7 +8,7 @@ morgan.token(
   (_, res: express.Response) => res.locals.errorMessage ?? ''
 );
 
-const ipFormat = config.env === 'prod' ? ':remote-addr - ' : '';
+const ipFormat = config.env === 'production' ? ':remote-addr - ' : '';
 const successResponseFormat = `${ipFormat}:method :url :status - :response-time ms`;
 const errorResponseFormat = `${ipFormat}:method :url :status - :response-time ms - :message`;
 

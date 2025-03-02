@@ -1,6 +1,4 @@
-import { createRequestHandler } from '@remix-run/express';
 import express from 'express';
-import path from 'path';
 import config from './config/config';
 import morgan from './config/morgan';
 import compression from 'compression';
@@ -21,10 +19,6 @@ app.use(express.static('public'));
 app.use(compression());
 
 app.use('/contacts', contacts);
-
-// remix
-const build = await import(path.resolve('../build/server/index.js'));
-app.all('*', createRequestHandler({ build }));
 
 // send back a 404 error for any unknown api request
 app.use((_req, _res, next) => {

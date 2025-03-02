@@ -1,10 +1,10 @@
 import process from 'process';
 import app from './app';
 import logger from './config/logger';
+import config from './config/config';
 
-const port = process.env.PORT ? parseInt(process.env.PORT) : 3000;
-const server = app.listen(port, () => {
-  logger.info(`Express Server initiated listening on port ${port}`);
+const server = app.listen(config.port, () => {
+  logger.info(`Express Server initiated listening on port ${config.port}`);
 });
 
 const safeShutdown = () => {

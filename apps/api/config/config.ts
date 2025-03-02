@@ -8,9 +8,8 @@ const envVarSchema = z.object({
   NODE_ENV: z
     .enum(['production', 'development', 'test'])
     .default('development'),
-  PORT: z.number().default(3000),
+  API_PORT: z.number().default(3001),
   DATABASE_URL: z.string().default('file:./dev.db'),
-  API_BASE_URL: z.string().default('http://localhost:3000'),
 });
 
 const parsedEnvVars = envVarSchema.safeParse(process.env);
@@ -20,7 +19,7 @@ if (!parsedEnvVars.success) {
 
 const config = {
   env: parsedEnvVars.data.NODE_ENV,
-  port: parsedEnvVars.data.PORT,
+  port: parsedEnvVars.data.API_PORT,
 };
 
 export default config;
