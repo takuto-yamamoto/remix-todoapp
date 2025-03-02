@@ -7,7 +7,7 @@ import {
   ListContactsResponse,
   UpdateContactReq,
   UpdateContactRes,
-} from '../.server/schemas/contact';
+} from '../../../api/schemas/contact';
 
 export const createEmptyContact = async () => {
   const data: CreateContactReq = { contact: {} };
