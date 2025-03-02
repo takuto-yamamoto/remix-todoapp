@@ -36,7 +36,7 @@ export default tseslint.config(
           alphabetize: { order: 'asc', caseInsensitive: true },
           pathGroups: [
             {
-              pattern: 'remix',
+              pattern: '@remix-run/**',
               group: 'external',
               position: 'before',
             },

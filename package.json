@@ -23,7 +23,10 @@
     "typescript": "^5.7.3"
   },
   "lint-staged": {
-    "**/*.{js,mjs,cjs,jsx,ts,mts,cts,tsx,vue,astro,svelte}": "oxlint --fix"
+    "**/*.{js,mjs,cjs,jsx,ts,mts,cts,tsx,vue,astro,svelte}": [
+      "oxlint . --fix",
+      "eslint . --fix"
+    ]
   },
   "dependencies": {
     "@eslint/compat": "^1.2.7",

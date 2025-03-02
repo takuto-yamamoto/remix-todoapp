@@ -7,7 +7,7 @@ todo example app using remix
 - [x] pnpm
 - [x] vite
 - [ ] vitest
-- [ ] oxc
+- [x] oxc
 - [ ] playwright
 - [x] **remix**
 - [x] express
